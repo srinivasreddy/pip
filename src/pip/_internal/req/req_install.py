@@ -441,7 +441,7 @@ class InstallRequirement(object):
         # so we have to explicitly convert it to a canonical name
         no_marker.name = canonicalize_name(no_marker.name)
         try:
-            self.satisfied_by = pkg_resources.get_distribution(str(no_marker))
+            self.satisfied_by = get_distribution(str(no_marker))
         except pkg_resources.DistributionNotFound:
             return
         except pkg_resources.VersionConflict:
